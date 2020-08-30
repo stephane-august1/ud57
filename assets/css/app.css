@@ -2,3 +2,9 @@ body {
     background-color: #b76fff;
     color: lightblue;
 }
+
+/*css calendrier*/
+#calendrier {
+    width: 80%;
+    margin: auto;
+}
