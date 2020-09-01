@@ -9,7 +9,7 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
+{# event|raw %#}
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
@@ -19,15 +19,80 @@
         <li>Your template at <code><a href="{{ '/Users/stephaneaugustin/Documents/symfony/starter/starter4/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
     </ul>
 </div>
-<div id="#calendrier"></div>
+{% for event in event %}
+  {{event.id}}
+{% endfor %}
+
+<div id="jsonmoselle" data-json="{{asset('js/moselle.json')}}">
+<div id="#calendrier" ></div>
+<div id ="recup" data-valeur="{{event}}" data-toggle="popover" ></div>
+<div id="map"></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        
+      </div>
+     
+      <div id="idedit" data-id="" ></div>
+      <div id="start"></div>
+      <div id="end"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+   
+    
+    
+         <a href="Url" type="button" class="btn btn-primary" id="hrefid" data-href="" >Modifier</a>
+        
+        
+      
+      
+     
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 <br>
 <br>
 <br>
 <br>
 {% endblock %}
+
 {% block javascripts %}
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+<script>
+  //recupere le json pour le js
+var test= $('#recup').data("valeur");
+
+
+</script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
+ 
+  
+
+
 <script src="./js/perso.js"></script>
-   
+<script src="./js/calendar.js"></script>
+<script src="./js/map.js"></script>
+
+  
+ 
+
 
 {% endblock %}

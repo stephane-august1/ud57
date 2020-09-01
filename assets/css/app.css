@@ -1,4 +1,5 @@
 body {
+    color: #94a36f;
     background-color: #b76fff;
     color: lightblue;
 }
@@ -7,4 +8,8 @@ body {
 #calendrier {
     width: 80%;
     margin: auto;
+}
+
+#map {
+    height: 300px;
 }
