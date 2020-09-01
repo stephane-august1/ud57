@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#modalTitle').html(ev.event.title);
            $('#modalBody').html(ev.event._def.extendedProps.description);
            $("#start").html(ev.event.start)
-            $("#fin").html(ev.event.end)
+            $("#end").html(ev.event.end)
         $('#idedit').html(ev.event.id);
         $('#exampleModal').modal('show')
         
