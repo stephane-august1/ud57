@@ -19,15 +19,23 @@
         <li>Your template at <code><a href="{{ '/Users/stephaneaugustin/Documents/symfony/starter/starter4/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
     </ul>
 </div>
-{% for event in event %}
-  {{event.id}}
-{% endfor %}
+
 
 <div id="jsonmoselle" data-json="{{asset('js/moselle.json')}}">
+<div id="tooltip"></div>
 <div id="#calendrier" ></div>
-<div id ="recup" data-valeur="{{event}}" data-toggle="popover" ></div>
-<div id="map"></div>
 
+<div id ="recup" data-valeur="{{event}}" data-toggle="popover"  style="background-color:blue !important;"></div>
+<div id="map"></div>
+<!--recherche pour map-->
+  <p>
+            <label for="champ-ville">Ville : </label>
+            <input type="text" id="champ-ville">
+           
+          <p>latitude is :<div id="lat"></div>
+            longitude is :<div id="lon"></div>
+              </p>
+        </p>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,9 +51,9 @@
         
       </div>
      
-      <div id="idedit" data-id="" ></div>
-      start:<div id="start"></div>
-      stop:<div id="end"></div>
+     {#} <div id="idedit" data-id="" ></div>{#}
+      debut d'évenement:<div id="start"></div>
+     fin d'évenement:<div id="end"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         
@@ -70,6 +78,8 @@
 {% endblock %}
 
 {% block javascripts %}
+<script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
+<script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
@@ -88,6 +98,7 @@ var test= $('#recup').data("valeur");
 
 
 <script src="./js/perso.js"></script>
+<script src="./js/ajaxGet.js"></script>
 <script src="./js/calendar.js"></script>
 <script src="./js/map.js"></script>
 
