@@ -1,12 +1,50 @@
 body {
-    color: #94a36f;
-    background-color: #b76fff;
-    color: lightblue;
+    width: 98%;
+
+    /* background-color: #b76fff;
+    background-color: #edeaf0;*/
+    /*  color: lightblue;
+    color: rgb(138, 181, 196);*/
+}
+
+.jumbotron {
+    /*background: url('./images/jumbotron.jpg') no-repeat;*/
+    color: var(--red);
+}
+
+
+.bg-dark {
+    background-color: var(--whitesmoke) !important;
+}
+
+.nav-link {
+    color: var(--grey) !important;
+}
+
+.nav-link:hover {
+    color: var(--red) !important;
+}
+
+a.nav-link:hover {
+    background-color: rgb(202, 136, 136) !important;
+    border-radius: 6px;
+}
+
+.dropdown-item {
+    color: var(--dark) !important;
+    background-color: var(--whitesmoke) !important;
+}
+
+.dropdown-item:hover {
+    color: var(--red) !important;
+    background-color: rgb(202, 136, 136) !important;
+
 }
 
 /*css calendrier*/
 #calendrier {
-    width: 80%;
+    width: 800px;
+    height: 450px;
     margin: auto;
 }
 

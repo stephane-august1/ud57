@@ -5,25 +5,57 @@
 
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-{# event|raw %#}
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/stephaneaugustin/Documents/symfony/starter/starter4/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/stephaneaugustin/Documents/symfony/starter/starter4/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+<div class="jumbotron jumbotron-fluid" style="background:url(./images/jumbotron.jpg) no-repeat;background-size:40 100;">
+  <div class="container">
+    <h1 class="text-center display-4 ">Message d'accroche</h1>
+    <p class="text-center lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
 </div>
 
-
+<!--system card-->
+<div class="container">
+  <div class="card-group vgr-cards">
+    <div class="card">
+      <div class="card-img-body">
+      <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little
+          bit longer.</p>
+        <a href="#" class="btn btn-outline-primary">Primary</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-body">
+        <img class="card-img" src="https://picsum.photos/400/200" alt="Card image cap"></div>
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This card has supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-outline-primary">Primary</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-body">
+        <img class="card-img" src="https://picsum.photos/450/250" alt="Card image cap"></div>
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action. This is a wider card with supporting text below as a natural lead-in
+          to additional content. This content is a little bit longer.</p>
+        <a href="#" class="btn btn-outline-primary">Primary</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end system card-->
 <div id="jsonmoselle" data-json="{{asset('js/moselle.json')}}">
 <div id="tooltip"></div>
-<div id="#calendrier" ></div>
+<div class="row">
+  <div class="col-10 offset-1">
+  <div id="#calendrier" ></div>
+  </div>
+</div>
+
 
 <div id ="recup" data-valeur="{{event}}" data-toggle="popover"  style="background-color:blue !important;"></div>
 <div id="map"></div>
