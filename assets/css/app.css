@@ -12,6 +12,17 @@ body {
     color: var(--red);
 }
 
+.btn-special {
+    border: 3px double rgb(202, 136, 136) !important;
+    border-radius: 7px !important;
+}
+
+.btn-special:hover {
+    background-color: rgb(202, 136, 136) !important;
+    color: var(--red) !important;
+    border: 3px double white !important;
+    border-radius: 7px !important;
+}
 
 .bg-dark {
     background-color: var(--whitesmoke) !important;
@@ -23,6 +34,7 @@ body {
 
 .nav-link:hover {
     color: var(--red) !important;
+
 }
 
 a.nav-link:hover {
@@ -40,6 +52,8 @@ a.nav-link:hover {
     background-color: rgb(202, 136, 136) !important;
 
 }
+
+
 
 /*css calendrier*/
 #calendrier {
@@ -213,3 +227,77 @@ a.nav-link:hover {
 }
 
 /**/
+
+/*css card page accueil*/
+
+.card {
+    border: none;
+
+}
+
+.card-img {
+    border-radius: 0;
+
+}
+
+
+.card {
+    display: flex;
+    flex-flow: wrap;
+    flex: 100%;
+    margin-bottom: 40px;
+
+
+}
+
+.shadow {
+    box-shadow: 4px 4px 5px rgba(0, 0.2, 0, 0.6);
+}
+
+
+
+@media (max-width: 576px) {
+    /*  display: block;*/
+}
+
+
+
+.card-img-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+@media (max-width: 576px) {
+    /*  width: 100%;
+            height: 200px;
+            margin-bottom: 20px;*/
+}
+
+
+
+.card-img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 1140px) {
+    /*    margin: 0;
+            transform: none;
+            width: 100%;
+            height: auto;*/
+}
+
+
+
+.card-body {
+    flex: 2;
+    padding: 0 0 0 1.25rem;
+}
+
+@media (max-width: 576px) {
+    /* padding: 0;*/
+}
