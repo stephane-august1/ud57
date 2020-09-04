@@ -8,26 +8,30 @@
       <title>{% block title %}Bienvenue !{% endblock %}</title>
       
    
+    <link rel="stylesheet" type="text/css" href="../css/util.css">  
       {% block stylesheets %}
       
       {{ encore_entry_link_tags('app') }}
+      
       <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'/>
-  <link rel="stylesheet" href="./css/bootstrap.4.2.3.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/bootstrap.4.2.3.css">
    {#} <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">{#}
       {% endblock %}
      <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css' rel='stylesheet' >
        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>  
+   crossorigin=""/> 
+    <link rel="stylesheet" href="../css/bootstrap.4.2.3.css" >
+    <link rel="stylesheet" type="text/css" href="./css/util.css">   
     </head>
 
     <body>
       {# start nav bar#}
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+       <nav class="navbar navbar-expand-lg  ">
         <a class="navbar-brand text-danger" style="font-size:2.0em;" href="{{ path('home') }}">Log@</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+        <button class="navbar-toggler bg-light navbar-light" type="button" data-toggle="collapse" data-target="#navbarColor02"
           aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class=" navbar-light navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse text-center " id="navbarColor02" style="margin-right:14% !important;margin-left:0px">
@@ -86,17 +90,9 @@
                 <a class="dropdown-item " href="#about">about us</a>
               </div>
             </li>
-            {% if not app.user %}
-            <li class="nav-item ">
-              <a class="nav-link" href="{{path('registration')}}">Inscription </a>
-            </li>
+         
 
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Mon compte</a>
-            </li>
-
-            {% endif %}
+        
 
           </ul>
 
@@ -113,14 +109,20 @@
           </li>
 
           {% else %}
-          <li class=" navbar-nav nav-item">
-            <a  class="nav-link bg-dark" style="color:lightgreen;text-align:center;width:8em;" href="{{path('admin')}}">Back office</a>
-          </li>
-          <li class=" navbar-nav nav-item ">
+         
+         <a  class="nav-link bg-dark" style="color:lightgreen;text-align:center;width:6em;" href="{{path('admin')}}">
+          <li class=" navbar-nav ">
 
-            <span style="color:lightgreen;font-size:1.6em;float:left">{{ app.user.name }}</span>
-            <img src="{{ asset('avatar.png') }}" style="color:lightgreen;heigth:2em;width:3em;margin-left:6%">
-          </li>
+<div class="row">
+  <div class="col-12 text-center"> <span class="text-center" style="color:lightgreen;font-size:1.6em;">{{ app.user.name }}</span>
+  </div>
+
+     
+  <div class="col-12 text-center">     
+            <img class="mx-auto" src="{{ asset('avatar.png') }}" style="color:lightgreen;heigth:1.3em;width:1.5em;">
+              </div>
+</div>
+          </li></a>
           {% endif %}
 
 

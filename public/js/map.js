@@ -149,9 +149,10 @@ xmlhttp.onreadystatechange = () =>  {
       }
   }  
 }
+
+xmlhttp.open("GET","http://localhost:8001/js/moselle.geojson",true);
+xmlhttp.send(null);
 /*
-xmlhttp.open("GET","http://localhost:8000/js/moselle.geojson",true);
+xmlhttp.open("GET","http://localhost:8000/js/test.geojson",true);
 xmlhttp.send(null);
 */
-xmlhttp.open("GET","http://localhost:8000/js/test.geojson",false);
-xmlhttp.send(null);
