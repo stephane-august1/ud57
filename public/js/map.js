@@ -31,10 +31,10 @@ champVille.addEventListener("change", function () {
         for (let i = 0; i < ville.length; i++) {
             //modifier le marker avec une image
 var myIcon = L.icon({
-    iconUrl: 'goutterigolo.png',
-    iconSize: [48, 65],
-    iconAnchor: [22, 4],
-    popupAnchor: [-3, -76],
+    iconUrl: 'goutterigolored.png',
+    iconSize: [38, 55],
+    iconAnchor: [13, 4],
+    popupAnchor: [4, -46],
     //shadowUrl: 'goutterigolo.png',
     shadowSize: [68, 95],
     shadowAnchor: [22, 94]
@@ -58,7 +58,7 @@ var myIcon = L.icon({
 
      
 
-var map = L.map('map').setView([49.1191, 6.1727], 8);
+var map = L.map('map').setView([49.0191, 6.6727], 9);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -74,10 +74,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
    
 //modifier le marker avec une image
 var myIcon = L.icon({
-    iconUrl: 'goutterigolo.png',
-    iconSize: [48, 65],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
+    iconUrl: 'goutterigolored.png',
+    iconSize: [38, 55],
+    iconAnchor: [13, 4],
+    popupAnchor: [4, -46],
     //shadowUrl: 'goutterigolo.png',
     shadowSize: [68, 95],
     shadowAnchor: [22, 94]
@@ -101,7 +101,14 @@ for (let i = 0; i < tab.length; i++) {
     
 }*/
 var marker = L.marker(
-    [49.1191, 6.1727]).addTo(map);
+    [49.1191, 6.1727],
+ {
+    draggable:true,
+    icon: myIcon,
+}
+).addTo(map);
+
+marker.bindPopup("<a href='#'>my tooltip text</a>");
 //marker en rond
 var circle = L.circle([48.708, 5.00], {
     color: 'red',
@@ -150,7 +157,7 @@ xmlhttp.onreadystatechange = () =>  {
   }  
 }
 
-xmlhttp.open("GET","http://localhost:8001/js/moselle.geojson",true);
+xmlhttp.open("GET","http://localhost:8000/js/moselle.geojson",true);
 xmlhttp.send(null);
 /*
 xmlhttp.open("GET","http://localhost:8000/js/test.geojson",true);
