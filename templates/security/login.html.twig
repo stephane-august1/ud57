@@ -3,7 +3,10 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post" action="{{ path('app_login') }}" >
+
+<div class="container-login100" style="background-image:""">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+			<form class="login100-form validate-form" method="post" action="{{ path('app_login') }}">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -11,7 +14,7 @@
     {% if app.user %}
         <div class="checkbox mb-3"> {{ app.user.username }} en ligne, <a href="{{ path('app_logout') }}">Logout</a></div>
     {% endif %}
-<div class="container">
+{# }<div class="container"> 
     <h1 class="h3 mb-6 font-weight-normal">Identifiez Vous !</h1><br><br>
 
     <label for="inputEmail" class="sr-only">Email</label>
@@ -32,24 +35,82 @@
                 <input type="checkbox" name="_remember_me"> Remember me
             </label>
         </div>
-    #} <br>
+     <br>
 <div class="row mb-5">
     <div class="col-lg-8"></div>  <div class="col-lg-2">
     <button class="btn  btn-info  btn-sm mb-2 " type="submit">
         Sign in  
     </button></div></div>
-</form>
+</form>#}
+{#  #}
 
-<div class="row mb-5">
+				<span class="login100-form-title p-b-37">
+					Indentifiez Vous
+				</span>
+
+				<div class="wrap-input100 validate-input m-b-20 alert-validate" data-validate="enter mail">
+                <span class="focus-input100"></span>
+					<input class="input100" type="text" placeholder="email" value="{{ last_username }}"name="email" id="inputEmail">
+					
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-25 alert-validate" >
+              
+					<input  class="input100" type="password" name="password" placeholder="Password" required>
+					<span class="focus-input100"></span>
+ 
     
-        
-        <div class="col-lg-5">
-        <h4>Pas de compte.Inscrivez-vous ici!</h4></div>
 
-        <div class="col-lg-2 ">
-            <a class="btn-success btn ml-5"
-                href="{{ path("registration") }}">inscription</a>
+				</div>
+  <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
 
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+     <br>#}
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" type="submit">
+						Valider
+					</button>
+				</div>
+
+				
+
+
+				<div class="text-center m-t-20"> 
+				{# 	<a   "href="{{ path("registration") }}" class="txt2 hov1">
+						inscription
+					</a>#}
+				</div>
+			</form>
+
+			<br>
+            <br>
+            <br>
+		</div>
+
+
+    
+    <div class="container-login100-form-btn">
+    <span class="login100-form-title p-b-3">
+				<h4>Pas de compte.Inscrivez-vous ici!</h4>
+				</span>
    
-</div></div></div>
+					<a href="{{ path("registration") }}" class="login100-form-btn" >
+						inscription
+					</a>
+				</div>
+        
+     
+</div></div>
+{#  #}
+</div>
 {% endblock %}
