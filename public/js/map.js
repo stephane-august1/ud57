@@ -1,5 +1,4 @@
 
-
 //recupere le champ ville
  const champVille = document.getElementById('champ-ville')
 console.log(champVille);
@@ -156,10 +155,11 @@ xmlhttp.onreadystatechange = () =>  {
       }
   }  
 }
-
-xmlhttp.open("GET","http://localhost:8000/js/moselle.geojson",true);
-xmlhttp.send(null);
 /*
-xmlhttp.open("GET","http://localhost:8000/js/test.geojson",true);
+xmlhttp.open("GET", "http://localhost:8000/js/moselle.geojson", true);
+xmlhttp.setRequestHeader('Access-Control-Allow-Origin','*');
+
+xmlhttp.send(null);*/
+
+xmlhttp.open("GET","http://127.0.0.1:8000/js/test.geojson",true);
 xmlhttp.send(null);
-*/
