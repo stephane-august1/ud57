@@ -3,11 +3,59 @@
 {% block title %}Edit Article{% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-10">
     <h1>Edit Article</h1>
 
     {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="col-12 ">
+                            <div class="form-group  field-vich_image"><legend class="col-form-label">Image file</legend><div class="form-widget">
+                                    
+                                <div class="easyadmin-vich-image">
+                                    
+                <a href="#" class="easyadmin-thumbnail" data-featherlight="#easyadmin-lightbox-article_imageFile" data-featherlight-close-on-click="anywhere">
+                    <img src="/images/article/CI stephane.png">
+                </a>
 
+                <div id="easyadmin-lightbox-article_imageFile" class="easyadmin-lightbox">
+                    <img src="/images/article/CI stephane.png">
+                </div>
+                    
+        
+        <div class="easyadmin-vich-image-actions">
+                        <div class="btn btn-secondary input-file-container">
+                <i class="fa fa-fw fa-upload"></i> Choose file
+                <input type="file" id="article_imageFile_file" name="article[imageFile][file]" onchange="            var newFile = document.getElementById('article_imageFile_file').files[0];
+            var fileSizeInMegabytes = newFile.size > 1024 * 1024;
+            var fileSize = fileSizeInMegabytes ? newFile.size / (1024 * 1024) : newFile.size / 1024;
+            document.getElementById('article_imageFile_file_new_file_name').innerText = newFile.name + ' (' + fileSize.toFixed(2) + ' ' + (fileSizeInMegabytes ? 'MB' : 'KB') + ')';
+        " class="custom-file-input" />
+            </div>
+
+                                <div class="form-group  field-checkbox"><div class="form-widget">
+                                    
+                            <div class="form-check">        <input type="checkbox" id="article_imageFile_delete" name="article[imageFile][delete]" class="form-check-input" value="1" />
+        <label class="form-check-label" for="article_imageFile_delete">form.label.delete</label></div>            
+            
+            </div>
+    </div>
+                    </div>
+        <div class="small" id="article_imageFile_file_new_file_name"></div>
+    </div>
+            
+            
+            </div>
+    </div>
     <a href="{{ path('article_index') }}">back to list</a>
-
+           
     {{ include('article/_delete_form.html.twig') }}
+    </div>
+    </div>
+</div><br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}
+

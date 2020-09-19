@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\User;
 
 use App\Entity\Article;
-
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 //use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -55,6 +55,8 @@ class UserFixtures extends Fixture
             $article->setTitle("le titre n°" . $i);
             $article->setContent("ici le contenu de l'article n°" . $i);
             $article->setImage("https://placehold.it/500x200");
+
+            $article->setupdatedAt(new Datetime('now'));
 
 
             $manager->persist($article);

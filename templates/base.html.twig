@@ -6,27 +6,75 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>{% block title %}Bienvenue !{% endblock %}</title>
+      
+   
+    <link rel="stylesheet" type="text/css" href="../css/util.css">  
       {% block stylesheets %}
+      
       {{ encore_entry_link_tags('app') }}
-      <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+      
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'/>
+  <link rel="stylesheet" href="./css/bootstrap.4.2.3.css">
+   {#} <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">{#}
       {% endblock %}
-      <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css' rel='stylesheet' >
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/> 
+    <link rel="stylesheet" href="../css/bootstrap.4.2.3.css" >
+    <link rel="stylesheet" type="text/css" href="./css/util.css">   
     </head>
 
     <body>
       {# start nav bar#}
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" style="font-size:1.8em;" href="{{ path('home') }}">Site Name</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+       <nav class="navbar navbar-expand-lg  ">
+        <a class="navbar-brand text-danger" style="font-size:2.0em;" href="{{ path('home') }}">Log@</a>
+        <button class="navbar-toggler bg-light navbar-light" type="button" data-toggle="collapse" data-target="#navbarColor02"
           aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class=" navbar-light navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
-          <ul class="navbar-nav mr-auto" style="margin-left:33%;">
+        <div class="collapse navbar-collapse text-center " id="navbarColor02" style="margin-right:14% !important;margin-left:0px">
+          <ul class="navbar-nav mx-auto" style="margin-left:33%;">
             <li class="nav-item active">
-              <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ path('home') }}">qui sommes nous <span class="sr-only">(current)</span></a>
             </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Donner
+              </a>
+              <div class="dropdown-menu " aria-labelledby="navbarDropdown ">
+              
+ <a class="dropdown-item " href="#prochaines collectes">prochaines collectes</a>
+                <div class="dropdown-divider"></div>
+               
+                 <a class="dropdown-item " href="#Donner régulièrement">Donner régulièrement</a>
+                <div class="dropdown-divider"></div>
+                  <a class="dropdown-item " href="#différents dons possibles">différents dons possibles</a>
+             
+                <div class="dropdown-divider"></div>
+                   <a class="dropdown-item " href="#conditions, contre indication">conditions, contre indication</a>
+                
+              </div>
+            </li>
+     
+
+
+    <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Activités
+              </a>
+              <div class="dropdown-menu " aria-labelledby="navbarDropdown ">
+                <a class="dropdown-item " href="#cActivités photos">Activités photos</a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item " href="#vidéos actualités">vidéos actualités</a>
+              </div>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="{{ path('blog') }}">Blog</a>
             </li>
@@ -35,24 +83,16 @@
                 aria-expanded="false">
                 contacter_moi
               </a>
-              <div class="dropdown-menu bg-dark text-white" aria-labelledby="navbarDropdown ">
-                <a class="dropdown-item bg-dark text-white" href="#contact">Contact</a>
+              <div class="dropdown-menu " aria-labelledby="navbarDropdown ">
+                <a class="dropdown-item " href="#contact">Contact</a>
 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item bg-dark text-white" href="#about">about us</a>
+                <a class="dropdown-item " href="#about">about us</a>
               </div>
             </li>
-            {% if not app.user %}
-            <li class="nav-item ">
-              <a class="nav-link" href="{{path('registration')}}">Inscription </a>
-            </li>
+         
 
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Mon compte</a>
-            </li>
-
-            {% endif %}
+        
 
           </ul>
 
@@ -69,14 +109,20 @@
           </li>
 
           {% else %}
-          <li class=" navbar-nav nav-item">
-            <a  class="nav-link bg-dark" style="color:lightgreen;text-align:center;width:8em;" href="{{path('admin')}}">Back office</a>
-          </li>
-          <li class=" navbar-nav nav-item ">
+         
+         <a  class="nav-link bg-dark" style="color:lightgreen;text-align:center;width:6em;" href="{{path('admin2')}}">
+          <li class=" navbar-nav ">
 
-            <span style="color:lightgreen;font-size:1.6em;float:left">{{ app.user.name }}</span>
-            <img src="{{ asset('avatar.png') }}" style="color:lightgreen;heigth:2em;width:3em;margin-left:6%">
-          </li>
+<div class="row">
+  <div class="col-12 text-center"> <span class="text-center" style="color:lightgreen;font-size:1.6em;">{{ app.user.name }}</span>
+  </div>
+
+     
+  <div class="col-12 text-center">     
+            <img class="mx-auto" src="{{ asset('avatar.png') }}" style="color:lightgreen;heigth:1.3em;width:1.5em;">
+              </div>
+</div>
+          </li></a>
           {% endif %}
 
 
@@ -108,7 +154,7 @@
       <footer>
         <nav class=" fixed-bottom navbar navbar-expand-lg navbar-dark bg-dark">
 
-          <div class="collapse navbar-collapse" id="navbarColor02">
+          <div class="collapse navbar-collapse " id="" >
             <ul class="navbar-nav mr-auto" style="margin-left:33%">
 
               <li class="nav-item">
@@ -136,14 +182,20 @@
           </div>
         </nav>
       </footer>
-
-      {% endblock %}
-      {% block javascripts %}
-      {{ encore_entry_script_tags('app') }}
-
-
-
-      {% endblock %}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js'></script>
+    
+  <script src='/../../js/ajaxjquery.js'></script>
+   <script src="/../../js/monajax.js"></script> 
+{% endblock %}
+  
+    
+    
+    
     </body>
 
   </html>

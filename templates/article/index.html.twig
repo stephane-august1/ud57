@@ -12,6 +12,8 @@
                 <th>Title</th>
                 <th>Content</th>
                 <th>Image</th>
+                <th>imageplace</th>
+                <th>select</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +24,18 @@
                 <td>{{ article.title }}</td>
                 <td>{{ article.content }}</td>
                 <td>{{ article.image }}</td>
+                <td id="set-{{article.id}}" data-myset="{{ article.imageplace|raw }}">{{ article.imageplace|raw }}</td>
+                  <td> <label for="select">Change class</label>
+                  <select class="prepa" name="classimage" data-id="{{article.id}}" id="{{article.id }}"    
+                    data-route="{{path('article_modifi',{'id':article.id})}}">
+                    <option value='floatright'>right</option>
+                    <option value='floatleft'>left</option>
+                   
+                  </select></td>
+                
+           <td>    <img id="balise-{{article.id}}" class="{{ article.imageplace|raw }}" src="{{ vich_uploader_asset( article,'imageFile') }}" alt="{{  article.imagename }}" style="max-width:230px;max-height:150px;"></td>
+      
+
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
@@ -36,4 +50,8 @@
     </table>
 
     <a href="{{ path('article_new') }}">Create new</a>
+    <br>
+    <br>
+    <br>
+    <br>
 {% endblock %}

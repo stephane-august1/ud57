@@ -1,0 +1,123 @@
+#easy_admin:
+#    entities:
+#        # List the entity class name you want to manage
+#       # - App\Entity\Product
+#       # - App\Entity\Category
+#          - App\Entity\User
+easy_admin:
+  site_name:   'sitename' 
+  user:
+    display_name: true
+    display_avatar: true
+    name_property_path: 'name'
+    
+ 
+  list:
+    title: 'Liste des %%entity_label%%'
+  design:
+        form_theme: # Both themes are needed for ckeditor integration
+        - "@EasyAdmin/form/bootstrap_4.html.twig"
+        - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+          # List du menu
+        menu:
+            - { label: 'back to Home', route: 'home',icon: 'arrow-left'} 
+            - { entity : 'User', icon: 'user', permission: 'ROLE_ADMIN' }
+            - { entity: 'Article', icon: 'edit', label: 'Articles',permission: ['ROLE_ADMIN','ROLE_WRITER','ROLE_USER'] }
+            - { entity: 'Calendar',icon: 'calendar', label: 'Calendrier',permission: ['ROLE_USER'] }
+          # List the entity class name you want to manage
+  entities:
+    
+         
+    Article:    
+      class : App\Entity\Article
+      list:
+        fields:
+         
+          - { property: 'image', type: 'vich_image' ,template: 'vich_uploader_image.html.twig'}
+          - { property: 'title', type: 'text' }
+          - { property: 'imageplace', type: 'text' }
+         
+          - { property: 'content', type: 'text' }
+          - { property: 'image_name', type: 'text' }
+      edit :
+          fields:
+            - { type: 'tab', label: "Modifier l'article" }
+            - { type: 'group', label: 'Ecrire', icon: 'pen', columns: 8 }
+            - { property: 'updatedat', type: 'date',label: 'La date' }
+            - { property: 'title', type: 'text',label: 'Le titre' }
+            - { property: 'content', type: 'fos_ckeditor',label: 'Le contenu'  }
+            - { type: 'group',icon: 'folder-open', margin-top: 4,columns: 4, label: "Charger L'image" }
+            - { property: 'image_name', type: 'text',label: "le nom de l'image"}
+            - { property: 'imageFile', type: 'vich_image',template: 'vich_uploader_image.html.twig' }
+            
+            - { property: 'imageplace', type: 'text' ,value: 'float-right'}
+      new :
+          fields:
+            - { type: 'tab', label: "Ecrire un article" }
+            - { type: 'group', label: 'Ecrire', icon: 'pen', columns: 8 }
+            - { property: 'updatedat', type: 'date',label: 'La date' }
+            - { property: 'title', type: 'text',label: 'Le titre' }
+            - { property: 'content', type: 'fos_ckeditor',label: 'Le contenu'  }
+            - { type: 'group',icon: 'folder-open', margin-top: 4,columns: 4, label: "Charger L'image" }
+            - { property: 'image_name', type: 'text',label: "le nom de l'image"}
+            - { property: 'imageFile', type: 'vich_image',template: 'vich_uploader_image.html.twig' }
+            
+           #- { property: 'imageplace', type: 'text' ,value: 'float-right'}
+           
+          
+    
+    
+    
+    
+    
+    Calendar:   
+      class : App\Entity\Calendar 
+  
+    
+    User: 
+      
+      class : App\Entity\User
+      controller: 'App\Controller\AdminUserController'
+      role: ROLE_ADMIN
+      list: 
+        
+        fields:
+          
+          - { property: 'id', type: 'text' ,permission: 'ROLE_ADMIN'}
+          - { property: 'name', type: 'text',permission: 'ROLE_ADMIN' }
+          
+          - { property: 'email', type: 'email',permission: 'ROLE_ADMIN' }
+          - { property: 'adresse', type: 'text',permission: 'ROLE_ADMIN' }
+          - { property: 'roles', type: 'json' ,permission: 'ROLE_ADMIN'}
+          - { property: 'password', label: 'PASSWORD', type: 'text',permission: 'ROLE_ADMIN' }
+         
+      edit :
+        fields:
+          - { type: 'tab', label: 'User ' }
+          - { type: 'group', columns: 4, label: 'Basic information' }
+          
+          - { property: 'name', type: 'text' }
+          - { property: 'email', type: 'email' }
+          - { property: 'adresse', type: 'text' } 
+          
+          - { type: 'group', label: 'Role information', icon: 'degre', columns: 4 }        
+          -   property: 'roles'
+              type: 'choice'
+              type_options:
+                    mapped: true
+                    expanded: true
+                    multiple: true
+                    choices: { 'User': 'ROLE_USER', 'Administrateur': 'ROLE_ADMIN' }
+          - { type: 'group', label: 'Password information', icon: 'degre', columns: 4 } 
+          - property: 'plainpassword'
+            label: 'PASSWORD'
+            type: 'password'
+            type_options: 
+              required: true
+      
+        class : App\Entity\User
+        controller: 'App\Controller\AdminUserController'
+        role: ROLE_USER
+        list:
+        
+        

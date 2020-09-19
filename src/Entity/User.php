@@ -49,6 +49,11 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     *@var string
+     */
+    private $plainpassword;
+
+    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      * 
@@ -62,6 +67,8 @@ class User implements UserInterface
      */
     private $password;
 
+
+
     /**
      * @Assert\EqualTo(propertyPath="password",message="Vous n'avez pas tapé le même mot de passe ! ")
      */
@@ -69,6 +76,14 @@ class User implements UserInterface
     private $newpassword;
     private $currentpassword;
 
+
+
+    public function __construct()
+    {
+        $this->plainpassword = null;
+        $this->roles = ['ROLE_USER'];
+        // $this->roles = null;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -124,10 +139,12 @@ class User implements UserInterface
      */
     public function getRoles(): ?array
     {
-        $roles = $this->roles;
+        return $this->roles;
+        /* $roles = $this->roles;
+        
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-        return array_unique($roles);
+        return array_unique($roles);*/
     }
     public function setRoles(array $roles): self
     {
@@ -184,5 +201,24 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+    /**
+     * Get the value of plainpassword.
+     */
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainpassword;
+    }
+
+    /**
+     * Set the value of plainpassword.
+     *
+     * @return self
+     */
+    public function setPlainPassword(?string $plainpassword): self
+    {
+        $this->plainpassword = $plainpassword;
+
+        return $this;
     }
 }

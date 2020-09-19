@@ -25,11 +25,11 @@ class UserController extends AbstractController
      *  
      */
 
-    public function index($id, UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository): Response
     {
         // $users = $this->getUser();
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->find($id),
+            'users' => $userRepository->findAll(),
             //'users' => $user,
         ]);
     }
@@ -125,5 +125,20 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('user_index');
+    }
+
+    /**
+     * 
+     * @Route("/index2", name="user_index2", methods={"GET"})
+     *  
+     */
+
+    public function index2($id, UserRepository $userRepository): Response
+    {
+        // $users = $this->getUser();
+        return $this->render('user/index.html.twig', [
+            'users' => $userRepository->find($id),
+            //'users' => $user,
+        ]);
     }
 }

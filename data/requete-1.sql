@@ -1,4 +1,5 @@
 -- SQLite
-SELECT id, name, email, adresse, roles, password
-FROM `user`;
+--SELECT id, name, email, adresse, roles, password
+--FROM `user`;
 --update user set roles='["ROLE_ADMIN"]' where id=6;
+update article set  imageplace='floatleft' where id=4;
